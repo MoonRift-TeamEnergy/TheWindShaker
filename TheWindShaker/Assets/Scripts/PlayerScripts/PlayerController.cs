@@ -26,6 +26,7 @@ public class PlayerController : MonoBehaviour
     bool up = true;
     float power = 0;
     int buttonPress = 0;
+    bool isgounded = false;
 
     #endregion
 
@@ -53,7 +54,7 @@ public class PlayerController : MonoBehaviour
     // this controls the players jump
     void Jump()
     {
-
+        if(isgounded)
         switch (buttonPress)
         {
             case 0:
@@ -87,6 +88,7 @@ public class PlayerController : MonoBehaviour
                         Debug.Log("velocity = " + myrb.velocity);
                         power = 0;
                         target.gameObject.SetActive(true);
+                        isgounded = false;
                     }
                     break;
                 }
@@ -132,6 +134,10 @@ public class PlayerController : MonoBehaviour
         if(collision.collider.tag == "Danger")
         {
             Death();
+        }
+        else if(collision.collider.tag == "Ground")
+        {
+            isgounded = true;
         }
     }
 
