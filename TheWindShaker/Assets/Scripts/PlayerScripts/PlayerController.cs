@@ -21,6 +21,7 @@ public class PlayerController : MonoBehaviour
     #region my variables
 
     Rigidbody myrb = default;
+    Vector3 beginingOfTheLevel = default;
     Vector3 savePosition = default;
     bool up = true;
     float power = 0;
@@ -35,6 +36,8 @@ public class PlayerController : MonoBehaviour
     {
         powerScale.enabled = false;
         myrb = GetComponent<Rigidbody>();
+        
+        beginingOfTheLevel = transform.position;
     }
 
     // Update is called once per frame
@@ -116,4 +119,20 @@ public class PlayerController : MonoBehaviour
             up = true;
         }
     }
+
+    void Death()
+    {
+        Debug.Log("im dead XP");
+        myrb.velocity = Vector3.zero;
+        transform.position = beginingOfTheLevel;
+    }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        if(collision.collider.tag == "Danger")
+        {
+            Death();
+        }
+    }
+
 }
