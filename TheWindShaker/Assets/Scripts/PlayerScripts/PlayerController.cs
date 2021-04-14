@@ -87,7 +87,6 @@ public class PlayerController : MonoBehaviour
 
                         Debug.Log("velocity = " + myrb.velocity);
                         power = 0;
-                        target.gameObject.SetActive(true);
                         isgounded = false;
                     }
                     break;
@@ -138,6 +137,7 @@ public class PlayerController : MonoBehaviour
         else if(collision.collider.tag == "Ground")
         {
             isgounded = true;
+            target.gameObject.SetActive(true);
         }
     }
 
