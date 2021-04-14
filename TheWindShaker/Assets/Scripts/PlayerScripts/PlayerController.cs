@@ -83,7 +83,7 @@ public class PlayerController : MonoBehaviour
                         buttonPress = 0;
                         Debug.Log("power = " + power);
 
-                        myrb.velocity = savePosition * power;
+                        myrb.AddForce(savePosition * power, ForceMode.VelocityChange);
 
                         Debug.Log("velocity = " + myrb.velocity);
                         power = 0;
@@ -134,7 +134,7 @@ public class PlayerController : MonoBehaviour
         {
             Death();
         }
-        else if(collision.collider.tag == "Ground")
+        else if(collision.collider.tag == "Ground" && !isgounded)
         {
             isgounded = true;
             target.gameObject.SetActive(true);
