@@ -141,4 +141,30 @@ public class PlayerController : MonoBehaviour
         }
     }
 
+
+    public void SetVilocity(Vector3 _vilocity)
+    {
+        myrb.velocity = _vilocity;
+    }
+
+    public Vector3 GetVilocity()
+    {
+        return myrb.velocity;
+    }
+
+    public void SetGrounded(bool _isgrounded)
+    {
+        isgounded = _isgrounded;
+        if(isgounded)
+        {
+            targetAnimator.SetBool("Pause", false);
+            target.gameObject.SetActive(true);
+        }
+    }
+
+    public bool GetGrounded()
+    {
+        return isgounded;
+    }
+
 }
