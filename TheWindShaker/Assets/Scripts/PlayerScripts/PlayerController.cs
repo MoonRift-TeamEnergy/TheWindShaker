@@ -75,7 +75,7 @@ public class PlayerController : MonoBehaviour
                 {
                     updatePower();
                     powerScale.fillAmount = power / maxPower;
-                    if (Input.GetButtonDown("Jump"))
+                    if (Input.GetButtonUp("Jump"))
                     {
 
                         targetAnimator.SetBool("Pause", false);
