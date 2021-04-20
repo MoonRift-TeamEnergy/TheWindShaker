@@ -8,12 +8,14 @@ public class RotatingPlatform : MonoBehaviour
     [SerializeField] float powerOfRotation = 0;
     [SerializeField] float TimeBetweanRotation = 0;
     Quaternion _rotation = default;
+    Rigidbody rigidbody = default;
 
     float time = 0;
     bool rotate = false;
     // Start is called before the first frame update
     void Start()
     {
+        rigidbody = GetComponent<Rigidbody>();
         _rotation = transform.rotation;
     }
 
@@ -22,7 +24,7 @@ public class RotatingPlatform : MonoBehaviour
     {
         UpdateTime();
         Rotate();
-            
+     
     }
 
 
@@ -37,6 +39,7 @@ public class RotatingPlatform : MonoBehaviour
             rotate = true;
             _rotation = transform.rotation;
             _rotation *= Quaternion.Euler(0, 0, 90 * Mathf.Clamp(direction, -1, 1));
+            
             time = 0;
         }
 
@@ -48,8 +51,9 @@ public class RotatingPlatform : MonoBehaviour
         {
             Quaternion rotation = transform.rotation;
             rotation *= Quaternion.Euler(0, 0, 90 * Mathf.Clamp(direction, -1, 1));
-            transform.rotation = Quaternion.Slerp(transform.rotation, _rotation, powerOfRotation * Time.fixedDeltaTime);
-            
+            rigidbody.MoveRotation(Quaternion.Slerp(transform.rotation, _rotation, powerOfRotation * Time.fixedDeltaTime));
+
+
         }
     }
 }
