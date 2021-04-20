@@ -30,7 +30,7 @@ public class PlayerController : MonoBehaviour
 
     #endregion
 
-
+    [SerializeField] Vector3 test;
 
     // Start is called before the first frame update
     void Start()
@@ -46,7 +46,7 @@ public class PlayerController : MonoBehaviour
     {
 
         Jump();
-
+        myrb.AddForce(PushVector, ForceMode.Force); 
 
     }
 
@@ -167,4 +167,7 @@ public class PlayerController : MonoBehaviour
         return isgounded;
     }
 
+
+
+    public Vector3 PushVector { get; set; }
 }
