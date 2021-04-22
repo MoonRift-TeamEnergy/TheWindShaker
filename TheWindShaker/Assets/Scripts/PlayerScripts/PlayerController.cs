@@ -24,7 +24,7 @@ public class PlayerController : MonoBehaviour
     Vector3 beginingOfTheLevel = default;
     Vector3 savePosition = default;
     bool up = true;
-    float power = 0;
+    float power = 1.0f;
     int buttonPress = 0;
     bool isgounded = false;
 
@@ -115,7 +115,7 @@ public class PlayerController : MonoBehaviour
         {
             up = false;
         }
-        else if (power <= 0)
+        else if (power <= 1)
         {
             up = true;
         }
