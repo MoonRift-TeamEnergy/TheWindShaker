@@ -82,6 +82,8 @@ public class PlayerControllerWithAnimations : MonoBehaviour
                         powerScale.fillAmount = power / maxPower;
                         if (Input.GetButtonUp("Jump"))
                         {
+                            GetComponent<AudioSource>().Play();
+
 
                             targetAnimator.SetBool("Pause", false);
                             powerScale.enabled = false;

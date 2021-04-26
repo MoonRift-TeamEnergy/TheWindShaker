@@ -8,7 +8,7 @@ public class VoidScript : MonoBehaviour
     {
         if (other.tag == "Player")
         {
-            PlayerController player = other.gameObject.GetComponent<PlayerController>();
+            PlayerControllerWithAnimations player = other.gameObject.GetComponent<PlayerControllerWithAnimations>();
 
             player.SetVilocity((transform.position - player.transform.position).normalized);
             player.SetGrounded(true);
@@ -20,7 +20,7 @@ public class VoidScript : MonoBehaviour
     {
         if (other.tag == "Player")
         {
-            PlayerController player = other.gameObject.GetComponent<PlayerController>();
+            PlayerControllerWithAnimations player = other.gameObject.GetComponent<PlayerControllerWithAnimations>();
             if (player.GetGrounded())
                 player.SetVilocity(player.GetVilocity() * 0.5f + (transform.position - player.transform.position).normalized);
         }
