@@ -4,20 +4,14 @@ using UnityEngine;
 
 public class Bouncy : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+    [SerializeField] float power = 0;
 
     private void OnCollisionEnter(Collision collision)
     {
-        collision.rigidbody.AddForce(Vector3.up * 700f);
+        Vector3 direction = collision.transform.position - transform.position;
+        collision.rigidbody.AddForce(transform.up * power, ForceMode.Impulse);
+       
     }
+    
 }
+

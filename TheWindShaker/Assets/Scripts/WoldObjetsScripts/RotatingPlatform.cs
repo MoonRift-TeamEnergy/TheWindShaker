@@ -51,7 +51,7 @@ public class RotatingPlatform : MonoBehaviour
         {
             Quaternion rotation = transform.rotation;
             rotation *= Quaternion.Euler(0, 0, 90 * Mathf.Clamp(direction, -1, 1));
-            rigidbody.MoveRotation(Quaternion.Slerp(transform.rotation, _rotation, powerOfRotation * Time.fixedDeltaTime));
+            rigidbody.MoveRotation(Quaternion.Lerp(transform.rotation, _rotation, powerOfRotation * Time.fixedDeltaTime));
 
 
         }

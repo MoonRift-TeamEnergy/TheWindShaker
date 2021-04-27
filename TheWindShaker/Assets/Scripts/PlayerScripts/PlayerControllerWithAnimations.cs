@@ -51,8 +51,6 @@ public class PlayerControllerWithAnimations : MonoBehaviour
 
         Jump();
         ParticalsAndAnimationsUpdater();
-        myrb.AddForce(PushVector, ForceMode.Force);
-        PushVector = Vector3.Lerp(PushVector, Vector3.zero, Time.deltaTime);
     }
 
 
@@ -88,11 +86,11 @@ public class PlayerControllerWithAnimations : MonoBehaviour
                             targetAnimator.SetBool("Pause", false);
                             powerScale.enabled = false;
                             buttonPress = 0;
-                            Debug.Log("power = " + power);
+                           // Debug.Log("power = " + power);
 
                             myrb.AddForce(savePosition * power, ForceMode.VelocityChange);
                             mysprite.sprite = temperarryanimator[2];
-                            Debug.Log("velocity = " + myrb.velocity);
+                            //Debug.Log("velocity = " + myrb.velocity);
                             power = 0;
                             isgounded = false;
                             airParticals.Play(true);
@@ -118,7 +116,7 @@ public class PlayerControllerWithAnimations : MonoBehaviour
     // this controls the power of the jump
     void updatePower()
     {
-        Debug.Log("power = " + power);
+       // Debug.Log("power = " + power);
         if (up)
         {
             power += SpeedOfPower * Time.deltaTime;
@@ -190,5 +188,8 @@ public class PlayerControllerWithAnimations : MonoBehaviour
 
 
 
-    public Vector3 PushVector { get; set; }
+    public void PushVector(Vector3 push)
+    {
+        myrb.AddForce(push, ForceMode.Force);
+    }
 }
