@@ -52,7 +52,7 @@ public class PlayerControllerWithAnimations : MonoBehaviour
         Jump();
         ParticalsAndAnimationsUpdater();
         myrb.AddForce(PushVector, ForceMode.Force);
-
+        PushVector = Vector3.Lerp(PushVector, Vector3.zero, Time.deltaTime);
     }
 
 
@@ -82,7 +82,7 @@ public class PlayerControllerWithAnimations : MonoBehaviour
                         powerScale.fillAmount = power / maxPower;
                         if (Input.GetButtonUp("Jump"))
                         {
-                            GetComponent<AudioSource>().Play();
+                           // GetComponent<AudioSource>().Play();
 
 
                             targetAnimator.SetBool("Pause", false);
@@ -105,14 +105,6 @@ public class PlayerControllerWithAnimations : MonoBehaviour
 
     void ParticalsAndAnimationsUpdater()
     {
-        #region particals updater
-
-        if (airParticals.isPlaying && myrb.velocity.y < 0)
-        {
-            airParticals.Stop();
-        }
-
-        #endregion
 
         #region animations
         if (myrb.velocity.y < 0 & !isgounded)
