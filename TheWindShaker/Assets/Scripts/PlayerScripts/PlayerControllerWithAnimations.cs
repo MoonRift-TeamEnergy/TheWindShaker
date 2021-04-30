@@ -58,6 +58,7 @@ public class PlayerControllerWithAnimations : MonoBehaviour
     void Jump()
     {
         if (isgounded)
+        {
             switch (buttonPress)
             {
                 case 0:
@@ -80,13 +81,13 @@ public class PlayerControllerWithAnimations : MonoBehaviour
                         powerScale.fillAmount = power / maxPower;
                         if (Input.GetButtonUp("Jump"))
                         {
-                           // GetComponent<AudioSource>().Play();
+                            // GetComponent<AudioSource>().Play();
 
 
                             targetAnimator.SetBool("Pause", false);
                             powerScale.enabled = false;
                             buttonPress = 0;
-                           // Debug.Log("power = " + power);
+                            // Debug.Log("power = " + power);
 
                             myrb.AddForce(savePosition * power, ForceMode.VelocityChange);
                             mysprite.sprite = temperarryanimator[2];
@@ -98,6 +99,7 @@ public class PlayerControllerWithAnimations : MonoBehaviour
                         break;
                     }
             }
+        }
 
     }
 
@@ -148,6 +150,7 @@ public class PlayerControllerWithAnimations : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
+        airParticals.Stop(true);
         if (collision.collider.tag == "Danger")
         {
             Death();
@@ -178,6 +181,11 @@ public class PlayerControllerWithAnimations : MonoBehaviour
         {
             targetAnimator.SetBool("Pause", false);
             target.gameObject.SetActive(true);
+        }
+        else
+        {
+            targetAnimator.SetBool("Pause", true);
+            target.gameObject.SetActive(false);
         }
     }
 

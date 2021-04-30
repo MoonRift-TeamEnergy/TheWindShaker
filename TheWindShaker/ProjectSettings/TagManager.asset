@@ -6,14 +6,15 @@ TagManager:
   tags:
   - Danger
   - Ground
+  - PlayerB
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
+  - Came
   - Water
   - UI
-  - 
+  - Player
   - 
   - 
   - 

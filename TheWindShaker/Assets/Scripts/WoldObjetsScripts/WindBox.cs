@@ -5,6 +5,14 @@ using UnityEngine;
 public class WindBox : MonoBehaviour
 {
     [SerializeField] float windPower = 0;
+    [SerializeField] bool onStart = false;
+
+    private void Start()
+    {
+        if(!onStart)
+        GetComponent<ParticleSystem>().Stop();
+    }
+
     private void OnTriggerStay(Collider other)
     {
         if (other.TryGetComponent<PlayerControllerWithAnimations>(out PlayerControllerWithAnimations player))
@@ -17,5 +25,18 @@ public class WindBox : MonoBehaviour
         }
        
     }
-   
+
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if(other.tag == "MainCamera")
+        GetComponent<ParticleSystem>().Play();
+    }
+
+    private void OnTriggerExit(Collider other)
+    {
+        if (other.tag == "MainCamera")
+            GetComponent<ParticleSystem>().Stop();
+    }
+
 }
